@@ -27,7 +27,7 @@ public class CustomSemaphore {
 
 	public static void main(String[] args) {
 
-		CustomSemaphore semaphore = new CustomSemaphore(3);
+		CustomSemaphore semaphore = new CustomSemaphore(2);
 
 		SendingThread sender = new SendingThread(semaphore);
 		SendingThread sender1 = new SendingThread(semaphore);

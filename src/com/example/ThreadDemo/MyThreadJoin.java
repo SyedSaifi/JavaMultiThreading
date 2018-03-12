@@ -28,7 +28,7 @@ class SampleThread extends Thread{
     public void run(){
         for(int i=0; i<1; i++){
             try{
-                Thread.sleep(10);
+                Thread.sleep(100);
             } catch(Exception ex){}
         }
         MyThreadJoin.names.add(getName());

@@ -19,6 +19,7 @@ public class CustomBlockingQueue {
 		if (this.queue.size() == 0) {
 			notifyAll();
 		}
+		notifyAll();
 		this.queue.add(item);
 		System.out.println("Added :: " + item);
 	}
@@ -32,6 +33,7 @@ public class CustomBlockingQueue {
 		}
 
 		System.out.println("Item removed::" + queue.get(0));
+		notifyAll();
 		return this.queue.remove(0);
 	}
 
@@ -43,7 +45,18 @@ public class CustomBlockingQueue {
 				try {
 					bq.enqueue(22);
 					bq.enqueue(33);
-					//bq.enqueue(44);
+					bq.enqueue(44);
+					bq.dequeue();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}.start();
+		new Thread() {
+			public void run() {
+				try {
+					bq.dequeue();
 					bq.dequeue();
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
